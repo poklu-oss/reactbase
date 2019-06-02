@@ -6,9 +6,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
+
 module.exports = {
   mode: 'development',
   entry: './src/index.js',
+  devtool: 'inline-source-map',
   module: {
     rules: [{
         test: /\.txt$/,
@@ -35,7 +37,7 @@ module.exports = {
         }]
       },
       {
-        test: /\.(woff|woff2|ttf|otf)$/,
+        test: /\.(woff|woff2|ttf|otf|eot)$/,
         use: [{
           loader: 'file-loader',
           options: {
@@ -67,10 +69,17 @@ module.exports = {
               sourceMap: true
             }
           }
+
         ]
       },
+      
       {
-        test: /\.js$/,
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+          exclude: /node_modules/
+      },
+      {
+        test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
@@ -106,11 +115,15 @@ module.exports = {
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'defer'
     }),
+    //new ExtractTextPlugin(),
     new MiniCssExtractPlugin({
       filename: 'webpack-bundle.css',
       chunkFilename: '[id].css'
     })
   ],
+  resolve: {
+      extensions: [ '.tsx', '.ts', '.js' ]
+    },
   externals: {
     $: 'jquery',
     jquery: 'jQuery',
