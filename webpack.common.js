@@ -5,12 +5,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
-
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development',
   entry: './src/index.js',
   devtool: 'inline-source-map',
+
+  resolve: {
+    extensions: [ '.tsx', '.ts', '.js' ]
+  },
+   node: {
+        fs: 'empty',
+    },
+    target:'web',
   module: {
     rules: [{
         test: /\.txt$/,
@@ -91,7 +99,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    //new CleanWebpackPlugin(['dist/*']),
     new HtmlWebpackPlugin({
       title: 'aniyus react',
       filename: 'index.html',
@@ -120,6 +128,7 @@ module.exports = {
       filename: 'webpack-bundle.css',
       chunkFilename: '[id].css'
     })
+
   ],
   resolve: {
       extensions: [ '.tsx', '.ts', '.js' ]
