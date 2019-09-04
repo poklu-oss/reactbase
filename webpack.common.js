@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
+<<<<<<< HEAD
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
@@ -19,6 +20,12 @@ module.exports = {
         fs: 'empty',
     },
     target:'web',
+=======
+
+module.exports = {
+  mode: 'development',
+  entry: './src/index.js',
+>>>>>>> parent of 449b216... base updated
   module: {
     rules: [{
         test: /\.txt$/,
@@ -45,7 +52,7 @@ module.exports = {
         }]
       },
       {
-        test: /\.(woff|woff2|ttf|otf|eot)$/,
+        test: /\.(woff|woff2|ttf|otf)$/,
         use: [{
           loader: 'file-loader',
           options: {
@@ -77,17 +84,10 @@ module.exports = {
               sourceMap: true
             }
           }
-
         ]
       },
-      
       {
-          test: /\.tsx?$/,
-          use: 'ts-loader',
-          exclude: /node_modules/
-      },
-      {
-        test: /\.(js|jsx)$/,
+        test: /\.js$/,
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
@@ -123,16 +123,12 @@ module.exports = {
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'defer'
     }),
-    //new ExtractTextPlugin(),
     new MiniCssExtractPlugin({
       filename: 'webpack-bundle.css',
       chunkFilename: '[id].css'
     })
 
   ],
-  resolve: {
-      extensions: [ '.tsx', '.ts', '.js' ]
-    },
   externals: {
     $: 'jquery',
     jquery: 'jQuery',
