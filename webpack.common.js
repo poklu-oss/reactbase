@@ -8,6 +8,7 @@ const PreloadWebpackPlugin = require('preload-webpack-plugin');
 <<<<<<< HEAD
 const Dotenv = require('dotenv-webpack');
 
+<<<<<<< HEAD
 module.exports = {
   mode: 'development',
   entry: ['./src/index.js'],
@@ -22,6 +23,11 @@ module.exports = {
     target:'web',
 =======
 
+module.exports = {
+  mode: 'development',
+  entry: './src/index.js',
+>>>>>>> parent of 449b216... base updated
+=======
 module.exports = {
   mode: 'development',
   entry: './src/index.js',

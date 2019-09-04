@@ -6,6 +6,7 @@ import './fonts/libre-baskerville-v5-latin-regular.woff2';
 import './index.html';
 import './index.scss';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App'
@@ -15,6 +16,9 @@ ReactDOM.render(
   <App/>,
   document.getElementById('root')
 );
+=======
+import './scripts/script.js';
+>>>>>>> parent of 449b216... base updated
 =======
 import './scripts/script.js';
 >>>>>>> parent of 449b216... base updated
