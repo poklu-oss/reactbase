@@ -20,7 +20,11 @@ module.exports = merge(common, {
         parallel: true,
         sourceMap: true,
       })
-    ]
+    ],     
+    splitChunks: {
+       chunks: 'all'
+     }
+
   },
   plugins: [
     new CompressionPlugin({

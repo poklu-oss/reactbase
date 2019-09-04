@@ -9,7 +9,7 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: ['./src/index.js'],
   devtool: 'inline-source-map',
 
   resolve: {
@@ -139,7 +139,8 @@ module.exports = {
     'window.$': 'jquery',
   },
   output: {
-    filename: 'webpack-bundle.js',
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
   }
 };
